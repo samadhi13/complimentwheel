@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFCDGN0KCE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EFCDGN0KCE');
+    </script>
+    <!-- Google AdSense Verification -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8494086888842655" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="description" content="Spin the Compliment Wheel for a fun, unique compliment! Brighten your day and share the positivity.">
     <meta name="keywords" content="compliment wheel, spin for compliments, positive quotes, fun game, compliment generator">
@@ -102,6 +112,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
+            margin-bottom: 20px;
         }
         .share-twitter, .share-facebook {
             display: inline-flex;
@@ -113,8 +124,8 @@
             border-radius: 25px;
             text-decoration: none;
             transition: background 0.3s;
-            pointer-events: none; /* Disabled until spun */
-            opacity: 0.5; /* Grayed out until spun */
+            pointer-events: none;
+            opacity: 0.5;
         }
         .share-twitter {
             background: #1DA1F2;
@@ -131,7 +142,21 @@
         .share-icon {
             margin-right: 8px;
             font-size: 18px;
-            color: #1DA1F2; /* Blue Twitter bird */
+            color: #1DA1F2;
+        }
+        .contact-us {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ff4757;
+            background: #fff3e6;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+        .contact-us:hover {
+            background: #ff1493;
+            color: white;
         }
         .ad-space {
             margin-bottom: 20px;
@@ -183,6 +208,17 @@
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0); }
         }
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .left-sidebar, .generator, .right-sidebar {
+                flex: none;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -216,6 +252,7 @@
                     <span class="share-icon">📘</span> Share
                 </a>
             </div>
+            <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
         </div>
         <div class="right-sidebar">
             <div class="ad-space">
@@ -232,7 +269,6 @@
             </div>
         </div>
     </div>
-
     <script>
         const compliments = [
             "You’re a walking burst of sunshine!",
@@ -334,7 +370,57 @@
             "You’ve got more shine than a polished penny.",
             "You’re a rocket of radness!",
             "Your joy could jumpstart a jellybean jar.",
-            "You’re the ultimate boost in any room!"
+            "You’re the ultimate boost in any room!",
+            "You’re a burst of joy that lights up any room!",
+            "Your creativity could inspire a whole galaxy!",
+            "You’ve got the kind of sparkle that stars envy!",
+            "You’re a walking, talking happiness generator!",
+            "Your positivity could turn rain into rainbows!",
+            "You’ve got a flair that could dazzle a parade!",
+            "You’re the secret sauce to a perfect day!",
+            "Your energy is like a turbo boost of awesome!",
+            "You’re a ray of sunshine on a cloudy planet!",
+            "You’ve got a glow that could guide ships home!",
+            "You’re a whirlwind of wonder and delight!",
+            "Your charm is like a magnet for good vibes!",
+            "You’re the glitter that makes life shimmer!",
+            "You’ve got a bounce that could lift a balloon!",
+            "You’re a masterpiece of mirth and magic!",
+            "Your smile could power a city of grins!",
+            "You’re the zest that spices up the universe!",
+            "You’ve got a twinkle that outshines the night!",
+            "You’re a melody of merriment and cheer!",
+            "Your spirit could soar over mountaintops!",
+            "You’re the spark that ignites pure fun!",
+            "You’ve got a radiance that warms the soul!",
+            "You’re a tidal wave of terrific energy!",
+            "Your wit is sharper than a comet’s tail!",
+            "You’re the bubble that pops with joy!",
+            "You’ve got a vibe that could wake up the moon!",
+            "You’re a supernova of silliness and smiles!",
+            "Your presence is like a party in a box!",
+            "You’re the dazzle in a world of dull!",
+            "You’ve got a pep that could pep up a panda!",
+            "You’re a whirlwind of whimsy and wow!",
+            "Your laugh is a symphony of sunshine!",
+            "You’re the bounce in life’s trampoline!",
+            "You’ve got a glow that could melt the ice caps!",
+            "You’re a rocket of radiance and glee!",
+            "Your charm could charm a flock of flamingos!",
+            "You’re the fizz that makes every moment pop!",
+            "You’ve got a spirit that dances with stars!",
+            "You’re a burst of brilliance in human form!",
+            "Your energy could electrify a festival!",
+            "You’re the twirl in life’s happiest dance!",
+            "You’ve got a shine that could blind the sun!",
+            "You’re a kaleidoscope of cool and cheer!",
+            "Your positivity could paint the sky pink!",
+            "You’re the zip that zaps up any day!",
+            "You’ve got a flair that flares up the fun!",
+            "You’re a beacon of bliss and brightness!",
+            "Your grin could launch a thousand giggles!",
+            "You’re the spark that starts every celebration!",
+            "You’ve got a zest that’s zestier than a lime!"
         ];
 
         let currentRotation = 0;
@@ -372,7 +458,7 @@
                 setTimeout(() => {
                     complimentElement.innerText = currentCompliment;
                     complimentElement.style.animation = "slideUp 0.5s ease forwards";
-                    const shareText = encodeURIComponent(`"${currentCompliment}" - Spin your own at ComplimentWheel.com!`);
+                    const shareText = encodeURIComponent(`"${currentCompliment}" - Get yours now at ComplimentWheel.com!`);
                     shareTwitter.href = `https://twitter.com/intent/tweet?text=${shareText}`;
                     shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=https://complimentwheel.com&quote=${shareText}`;
                     shareTwitter.style.pointerEvents = "auto";
