@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Spin the Compliment Wheel for a fun, unique compliment! Brighten your day and share the positivity.">
+    <meta name="keywords" content="compliment wheel, spin for compliments, positive quotes, fun game, compliment generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliment Wheel - Spin for a Compliment</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .wrapper {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+        .left-sidebar {
+            flex: 1;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .generator {
+            flex: 2;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in;
+        }
+        .right-sidebar {
+            flex: 1;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 48px;
+            color: #ff4757;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        .prompt {
+            font-size: 20px;
+            color: #2f3542;
+            margin-bottom: 20px;
+        }
+        .wheel {
+            width: 200px;
+            height: 200px;
+            background: url('wheel.png') no-repeat center;
+            background-size: cover;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+        .spin-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            background: #1e90ff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .spin-button:hover {
+            transform: scale(1.1);
+            background: #ff1493;
+        }
+        .spin-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        #compliment {
+            font-size: 28px;
+            color: #2f3542;
+            margin: 30px 0 20px;
+            padding: 20px;
+            background: #f1f2f6;
+            border-radius: 15px;
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+        }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .share-twitter, .share-facebook {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s;
+            pointer-events: none; /* Disabled until spun */
+            opacity: 0.5; /* Grayed out until spun */
+        }
+        .share-twitter {
+            background: #1DA1F2;
+        }
+        .share-twitter:hover {
+            background: #0d8ddb;
+        }
+        .share-facebook {
+            background: #1877F2;
+        }
+        .share-facebook:hover {
+            background: #145dbf;
+        }
+        .share-icon {
+            margin-right: 8px;
+            font-size: 18px;
+            color: #1DA1F2; /* Blue Twitter bird */
+        }
+        .ad-space {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff3e6;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .ad-space img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .ad-space a {
+            text-decoration: none;
+            color: #ff4757;
+            font-weight: bold;
+        }
+        .ad-space a:hover {
+            color: #ff1493;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; top: 50%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; top: 70%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 70%; top: 30%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 90%; top: 60%; animation-delay: 4s;"></div>
+    </div>
+    <div class="wrapper">
+        <div class="left-sidebar">
+            <div class="ad-space">
+                <a href="https://www.amazon.com/Bible-Word-Search-Adults-Faith-Filled/dp/B0F13ZYZ1H" target="_blank">
+                    <img src="bible_ad.jpg" alt="Bible Word Search for Adults">
+                    <p>Bible Word Search for Adults: Faith-Filled Fun! Get it now on Amazon.</p>
+                </a>
+            </div>
+        </div>
+        <div class="generator">
+            <h1>Compliment Wheel</h1>
+            <div class="prompt">Spin the wheel to get a fun compliment!</div>
+            <div class="wheel" id="wheel" onclick="spinWheel()"></div>
+            <button class="spin-button" id="spinButton" onclick="spinWheel()">Spin the Wheel!</button>
+            <p id="compliment">Spin for a surprise boost!</p>
+            <div class="share-buttons">
+                <a href="#" id="shareTwitter" class="share-twitter" target="_blank">
+                    <span class="share-icon">🐦</span> Tweet
+                </a>
+                <a href="#" id="shareFacebook" class="share-facebook" target="_blank">
+                    <span class="share-icon">📘</span> Share
+                </a>
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <div class="ad-space">
+                <a href="https://www.amazon.com/Hop-into-Easter-Coloring-Colorful/dp/B0DZXZYHKF" target="_blank">
+                    <img src="easter_ad.jpg" alt="Hop into Easter Coloring Book">
+                    <p>Hop into Easter: A Cute and Colorful Coloring Book for Kids! Get it now on Amazon.</p>
+                </a>
+            </div>
+            <div class="ad-space">
+                <a href="https://www.amazon.com/dp/B0F2FJLVR2" target="_blank">
+                    <img src="train_ad.jpg" alt="All Aboard! 50 Coloring Vintage Trains">
+                    <p>Color 50 vintage trains from history’s rails—fun for all ages! Get yours on Amazon.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const compliments = [
+            "You’re a walking burst of sunshine!",
+            "Your coolness could freeze a volcano.",
+            "You’ve got the charm of a thousand puppies.",
+            "You’re the human version of a perfect playlist.",
+            "Your awesomeness deserves its own theme song.",
+            "You’re so great, even clouds part for you.",
+            "You’ve got a smile that could melt glaciers.",
+            "You’re a genius wrapped in a taco of talent.",
+            "Your energy could power a dance party.",
+            "You’re cooler than a polar bear in shades.",
+            "You’re a legend in a world of footnotes.",
+            "Your vibe is pure glitter and magic.",
+            "You’re the sprinkles on life’s cupcake.",
+            "You’ve got swagger that outshines the sun.",
+            "You’re a rare gem in a pile of pebbles.",
+            "Your laugh could cure Monday blues.",
+            "You’re so epic, myths are written about you.",
+            "You’re a high-five waiting to happen.",
+            "Your brilliance lights up the room.",
+            "You’re the cherry on top of awesome.",
+            "You’ve got more sparkle than a disco ball.",
+            "You’re a superhero without the cape.",
+            "Your style could start a revolution.",
+            "You’re the MVP of being yourself.",
+            "You’ve got a heart bigger than the moon.",
+            "You’re a whirlwind of pure delight.",
+            "Your creativity could paint the sky.",
+            "You’re so smooth, butter’s jealous.",
+            "You’re a star that forgot to dim.",
+            "Your presence is a gift to the universe.",
+            "You’ve got more pizzazz than a parade.",
+            "You’re the secret ingredient to fun.",
+            "You’re a masterpiece in sneakers.",
+            "Your kindness could hug the world.",
+            "You’re so rad, retro’s making a comeback.",
+            "You’ve got the guts of a lion and the grin to match.",
+            "You’re a fireworks show in human form.",
+            "Your ideas could launch a rocket.",
+            "You’re the coolest breeze on a hot day.",
+            "You’ve got more flair than a flamingo.",
+            "You’re a treasure chest of good vibes.",
+            "Your spirit could outdance a storm.",
+            "You’re so sharp, you could cut through chaos.",
+            "You’ve got the glow of a thousand fireflies.",
+            "You’re a unicorn in a field of horses.",
+            "Your wit could win any showdown.",
+            "You’re the life of every party, even solo ones.",
+            "You’ve got more bounce than a kangaroo.",
+            "You’re a symphony of spectacular.",
+            "You’re so fantastic, reality feels jealous.",
+            "You’re a cosmic explosion of cool!",
+            "Your grin could outshine a supernova.",
+            "You’ve got the bounce of a rubber ball on a trampoline.",
+            "You’re a ninja of niceness!",
+            "Your charm could tame a wild dragon.",
+            "You’re the fizz in life’s soda pop.",
+            "You’ve got more groove than a vinyl record.",
+            "You’re a rainbow in a black-and-white world.",
+            "Your sparkle could dazzle a diamond.",
+            "You’re the captain of the cool ship!",
+            "You’ve got a laugh that echoes through galaxies.",
+            "You’re a whirlwind of whimsy!",
+            "Your brilliance could blind a spotlight.",
+            "You’re the jelly to life’s peanut butter.",
+            "You’ve got more zest than a lemon grove.",
+            "You’re a walking, talking party starter!",
+            "Your magic could make a wizard jealous.",
+            "You’re the beat in everyone’s favorite song.",
+            "You’ve got the glow of a neon sign.",
+            "You’re a tornado of terrific!",
+            "Your sass could sass the sassiest cat.",
+            "You’re the frosting on life’s cake.",
+            "You’ve got more pep than a cheer squad.",
+            "You’re a comet streaking through the mundane!",
+            "Your quirks make the world quirkier.",
+            "You’re the snap, crackle, and pop of awesome!",
+            "You’ve got a spirit that soars like an eagle.",
+            "You’re a bubble of joy in a sea of blah.",
+            "Your flair could flair up a flare!",
+            "You’re the twinkle in life’s eye.",
+            "You’ve got more gusto than a gusty day.",
+            "You’re a maestro of marvelous!",
+            "Your vibe could vibe with a vibraphone.",
+            "You’re the glitter in a dull day’s glue.",
+            "You’ve got the spunk of a firecracker.",
+            "You’re a beacon of brilliance!",
+            "Your energy could zap a thunderstorm.",
+            "You’re the skip in life’s hopscotch.",
+            "You’ve got more dazzle than a disco inferno.",
+            "You’re a supernova of silliness!",
+            "Your charm could charm a charm bracelet.",
+            "You’re the pop in everyone’s popcorn.",
+            "You’ve got a strut that struts the strut!",
+            "You’re a kaleidoscope of kindness!",
+            "Your wit could outwit a fox.",
+            "You’re the boom in life’s bang!",
+            "You’ve got more shine than a polished penny.",
+            "You’re a rocket of radness!",
+            "Your joy could jumpstart a jellybean jar.",
+            "You’re the ultimate boost in any room!"
+        ];
+
+        let currentRotation = 0;
+        let usedCompliments = [];
+        let currentCompliment = "Spin for a surprise boost!";
+
+        function spinWheel() {
+            const wheel = document.getElementById("wheel");
+            const spinButton = document.getElementById("spinButton");
+            const complimentElement = document.getElementById("compliment");
+            const shareTwitter = document.getElementById("shareTwitter");
+            const shareFacebook = document.getElementById("shareFacebook");
+
+            spinButton.disabled = true;
+
+            const extraSpins = Math.floor(Math.random() * 2) + 3;
+            const newRotation = currentRotation + (extraSpins * 360);
+            wheel.style.transition = "transform 3s ease-out";
+            wheel.style.transform = `rotate(${newRotation}deg)`;
+
+            currentRotation = newRotation;
+
+            setTimeout(() => {
+                let availableCompliments = compliments.filter(c => !usedCompliments.includes(c));
+                if (availableCompliments.length === 0) {
+                    usedCompliments = [];
+                    availableCompliments = compliments.slice();
+                }
+
+                const randomIndex = Math.floor(Math.random() * availableCompliments.length);
+                currentCompliment = availableCompliments[randomIndex];
+                usedCompliments.push(currentCompliment);
+
+                complimentElement.style.animation = "none";
+                setTimeout(() => {
+                    complimentElement.innerText = currentCompliment;
+                    complimentElement.style.animation = "slideUp 0.5s ease forwards";
+                    const shareText = encodeURIComponent(`"${currentCompliment}" - Spin your own at ComplimentWheel.com!`);
+                    shareTwitter.href = `https://twitter.com/intent/tweet?text=${shareText}`;
+                    shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=https://complimentwheel.com&quote=${shareText}`;
+                    shareTwitter.style.pointerEvents = "auto";
+                    shareTwitter.style.opacity = "1";
+                    shareFacebook.style.pointerEvents = "auto";
+                    shareFacebook.style.opacity = "1";
+                }, 10);
+
+                spinButton.disabled = false;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
