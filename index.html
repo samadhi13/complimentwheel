@@ -35,6 +35,7 @@
             max-width: 1200px;
             width: 100%;
             padding: 20px;
+            flex-wrap: nowrap; /* Ensures desktop stays in a row */
         }
         .left-sidebar {
             flex: 1;
@@ -139,7 +140,6 @@
         .share-icon {
             margin-right: 8px;
             font-size: 18px;
-            color: #1DA1F2;
         }
         .contact-us {
             display: inline-block;
@@ -213,12 +213,22 @@
         @media (max-width: 768px) {
             .wrapper {
                 flex-direction: column;
-                align-items: center;
+                width: 100%;
+                padding: 10px;
             }
             .left-sidebar, .generator, .right-sidebar {
                 flex: none;
                 width: 100%;
                 margin: 10px 0;
+            }
+            .generator {
+                order: 1;
+            }
+            .right-sidebar {
+                order: 2;
+            }
+            .left-sidebar {
+                order: 3;
             }
         }
         .about {
@@ -258,12 +268,12 @@
     </div>
     <div class="wrapper">
         <div class="left-sidebar">
-			 <div class="ad-space">
-        <a href="https://www.untoldstorieshistory.com/" target="_blank">
-            <img src="history_ad.jpg" alt="Untold Stories History">
-            <p>Discover Hidden Tales at Untold Stories in History — Explore Now!</p>
-        </a>
-    </div>
+            <div class="ad-space">
+                <a href="https://www.untoldstorieshistory.com/" target="_blank">
+                    <img src="history_ad.jpg" alt="Untold Stories History">
+                    <p>Discover Hidden Tales at Untold Stories History — Explore Now!</p>
+                </a>
+            </div>
             <div class="ad-space">
                 <a href="https://www.amazon.com/Bible-Word-Search-Adults-Faith-Filled/dp/B0F13ZYZ1H" target="_blank">
                     <img src="bible_ad.jpg" alt="Bible Word Search for Adults">
