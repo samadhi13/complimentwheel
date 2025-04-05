@@ -21,13 +21,14 @@
         body {
             margin: 0;
             padding: 0;
+            padding-bottom: 60px;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
             background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-y: auto;
         }
         .wrapper {
             display: flex;
@@ -60,9 +61,13 @@
         }
         h1 {
             font-size: 48px;
-            color: #ff4757;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff4757, #ff1493, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.5);
+            margin-bottom: 15px;
+            animation: bounceIn 1.5s ease infinite alternate;
         }
         .prompt {
             font-size: 20px;
@@ -114,7 +119,7 @@
             gap: 15px;
             margin-bottom: 20px;
         }
-        .share-twitter, .share-facebook {
+        .share-twitter {
             display: inline-flex;
             align-items: center;
             padding: 10px 20px;
@@ -126,18 +131,10 @@
             transition: background 0.3s;
             pointer-events: none;
             opacity: 0.5;
-        }
-        .share-twitter {
             background: #1DA1F2;
         }
         .share-twitter:hover {
             background: #0d8ddb;
-        }
-        .share-facebook {
-            background: #1877F2;
-        }
-        .share-facebook:hover {
-            background: #145dbf;
         }
         .share-icon {
             margin-right: 8px;
@@ -189,6 +186,11 @@
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        @keyframes bounceIn {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
         .particles {
             position: absolute;
             width: 100%;
@@ -219,6 +221,31 @@
                 margin: 10px 0;
             }
         }
+        .about {
+            font-size: 18px;
+            color: #2f3542;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f2f6;
+            border-radius: 10px;
+        }
+        .about h2 {
+            font-size: 24px;
+            color: #ff4757;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -240,7 +267,7 @@
         </div>
         <div class="generator">
             <h1>Compliment Wheel</h1>
-            <div class="prompt">Spin the wheel to get a fun compliment!</div>
+            <div class="prompt">Compliments to Make Your Day—Spin Now!</div>
             <div class="wheel" id="wheel" onclick="spinWheel()"></div>
             <button class="spin-button" id="spinButton" onclick="spinWheel()">Spin the Wheel!</button>
             <p id="compliment">Spin for a surprise boost!</p>
@@ -248,11 +275,12 @@
                 <a href="#" id="shareTwitter" class="share-twitter" target="_blank">
                     <span class="share-icon">🐦</span> Tweet
                 </a>
-                <a href="#" id="shareFacebook" class="share-facebook" target="_blank">
-                    <span class="share-icon">📘</span> Share
-                </a>
             </div>
             <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
+            <div class="about">
+                <h2>Why Spin the Compliment Wheel?</h2>
+                <p>Welcome to Compliment Wheel—a fun way to brighten your day! Spin for one of many unique, quirky compliments designed to make you smile. Whether you’re feeling down or just want a boost, we’re here to spread positivity. Share your favorite compliment with friends and keep the good vibes going!</p>
+            </div>
         </div>
         <div class="right-sidebar">
             <div class="ad-space">
@@ -269,6 +297,9 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <p>© 2025 Compliment Wheel. All rights reserved.</p>
+    </footer>
     <script>
         const compliments = [
             "You’re a walking burst of sunshine!",
@@ -420,7 +451,43 @@
             "You’re a beacon of bliss and brightness!",
             "Your grin could launch a thousand giggles!",
             "You’re the spark that starts every celebration!",
-            "You’ve got a zest that’s zestier than a lime!"
+            "You’ve got a zest that’s zestier than a lime!",
+            "You’re a jolt of jubilation in every step!",
+            "Your flair could flip a frown upside down!",
+            "You’ve got a zest that zings through the air!",
+            "You’re a prism of pure, playful light!",
+            "Your cheer could cheer up a grumpy goblin!",
+            "You’re the whirl in a world of wow!",
+            "You’ve got a gleam that gleams like gold!",
+            "You’re a rush of rapture in every room!",
+            "Your spunk could spark a spree of smiles!",
+            "You’re the hop in life’s happiest skip!",
+            "You’ve got a charm that chases clouds away!",
+            "You’re a fountain of fabulous fun!",
+            "Your glow could guide a galaxy home!",
+            "You’re the skip that makes hearts leap!",
+            "You’ve got a vibe that vibrates with victory!",
+            "You’re a blast of bliss beyond belief!",
+            "Your spirit could spin the world with joy!",
+            "You’re the tickle in life’s funny bone!",
+            "You’ve got a bounce that beats the blues!",
+            "You’re a whirlwind of wild, wonderful glee!",
+            "Your shine could shimmer through any shadow!",
+            "You’re the zap that zaps up every zone!",
+            "You’ve got a grin that grins at gravity!",
+            "You’re a burst of bubbly beyond compare!",
+            "Your energy could energize an elephant!",
+            "You’re the twist in life’s tastiest treat!",
+            "You’ve got a flair that flares with flair!",
+            "You’re a ripple of radiance in every wave!",
+            "Your joy could jolt a jellyfish to dance!",
+            "You’re the spark that sparks a sunny spree!",
+            "You’ve got a pep that pops like popcorn!",
+            "You’re a dash of delight in every day!",
+            "Your charm could charm a chilly chameleon!",
+            "You’re the glow that grows on everyone!",
+            "You’ve got a zing that zings with zest!",
+            "You’re a whirl of wonder in every whirl!"
         ];
 
         let currentRotation = 0;
@@ -432,7 +499,6 @@
             const spinButton = document.getElementById("spinButton");
             const complimentElement = document.getElementById("compliment");
             const shareTwitter = document.getElementById("shareTwitter");
-            const shareFacebook = document.getElementById("shareFacebook");
 
             spinButton.disabled = true;
 
@@ -458,13 +524,10 @@
                 setTimeout(() => {
                     complimentElement.innerText = currentCompliment;
                     complimentElement.style.animation = "slideUp 0.5s ease forwards";
-                    const shareText = encodeURIComponent(`"${currentCompliment}" - Get yours now at ComplimentWheel.com!`);
+                    const shareText = encodeURIComponent(`"${currentCompliment}"\nGet your compliment now at ComplimentWheel.com!`);
                     shareTwitter.href = `https://twitter.com/intent/tweet?text=${shareText}`;
-                    shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=https://complimentwheel.com&quote=${shareText}`;
                     shareTwitter.style.pointerEvents = "auto";
                     shareTwitter.style.opacity = "1";
-                    shareFacebook.style.pointerEvents = "auto";
-                    shareFacebook.style.opacity = "1";
                 }, 10);
 
                 spinButton.disabled = false;
