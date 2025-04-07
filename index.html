@@ -11,6 +11,15 @@
     </script>
     <!-- Google AdSense Verification -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8494086888842655" crossorigin="anonymous"></script>
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://complimentwheel.com/wheel.png">
+    <meta name="twitter:title" content="Compliment Wheel">
+    <!-- Open Graph Metadata for Facebook -->
+    <meta property="og:title" content="Compliment Wheel - Spin for Positivity">
+    <meta property="og:description" content="Spin for a unique compliment and spread the good vibes!">
+    <meta property="og:image" content="https://complimentwheel.com/wheel.png">
+    <meta property="og:url" content="https://complimentwheel.com">
     <meta charset="UTF-8">
     <meta name="description" content="Spin the Compliment Wheel for a fun, unique compliment! Brighten your day and share the positivity.">
     <meta name="keywords" content="compliment wheel, spin for compliments, positive quotes, fun game, compliment generator">
@@ -35,7 +44,7 @@
             max-width: 1200px;
             width: 100%;
             padding: 20px;
-            flex-wrap: nowrap; /* Ensures desktop stays in a row */
+            flex-wrap: nowrap;
         }
         .left-sidebar {
             flex: 1;
@@ -70,10 +79,18 @@
             margin-bottom: 15px;
             animation: bounceIn 1.5s ease infinite alternate;
         }
-        .prompt {
+        .intro, .prompt, .samples {
             font-size: 20px;
             color: #2f3542;
             margin-bottom: 20px;
+        }
+        .samples ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .samples li {
+            margin: 10px 0;
+            font-size: 18px;
         }
         .wheel {
             width: 200px;
@@ -120,7 +137,7 @@
             gap: 15px;
             margin-bottom: 20px;
         }
-        .share-twitter {
+        .share-twitter, .share-facebook {
             display: inline-flex;
             align-items: center;
             padding: 10px 20px;
@@ -132,10 +149,18 @@
             transition: background 0.3s;
             pointer-events: none;
             opacity: 0.5;
+        }
+        .share-twitter {
             background: #1DA1F2;
         }
         .share-twitter:hover {
             background: #0d8ddb;
+        }
+        .share-facebook {
+            background: #1877F2;
+        }
+        .share-facebook:hover {
+            background: #145dbf;
         }
         .share-icon {
             margin-right: 8px;
@@ -282,20 +307,37 @@
             </div>
         </div>
         <div class="generator">
+            <div class="intro">
+                Welcome to Compliment Wheel! Spin for positivity and a fun way to learn English phrases! “Be the Good” with every click — get a quirky compliment, share the vibe, and enjoy playful language like “You’re a superhero without the cape!” With hundreds of unique spins, it’s your daily dose of joy. Ready to brighten your day?
+            </div>
             <h1>Compliment Wheel</h1>
             <div class="prompt">Compliments to Make Your Day—Spin Now!</div>
             <div class="wheel" id="wheel" onclick="spinWheel()"></div>
             <button class="spin-button" id="spinButton" onclick="spinWheel()">Spin the Wheel!</button>
-            <p id="compliment">Spin for a surprise boost!</p>
+            <p id="compliment">Spin for a surprise compliment!</p>
             <div class="share-buttons">
                 <a href="#" id="shareTwitter" class="share-twitter" target="_blank">
                     <span class="share-icon">🐦</span> Tweet
+                </a>
+                <a href="#" id="shareFacebook" class="share-facebook">
+                    <span class="share-icon">📘</span> Share
                 </a>
             </div>
             <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
             <div class="about">
                 <h2>Why Spin the Compliment Wheel?</h2>
-                <p>Welcome to Compliment Wheel—a fun way to brighten your day! Spin for one of many unique, quirky compliments designed to make you smile. Whether you’re feeling down or just want a boost, we’re here to spread positivity. Share your favorite compliment with friends and keep the good vibes going!</p>
+                <p>At Compliment Wheel, we’re all about spreading joy — one spin at a time. With over hundreds of unique, handcrafted compliments, it’s a playful way to brighten your day or someone else’s. But it’s more than just fun, it’s a chance to “Be the Good” in a world that needs it. Each spin delivers a quirky English phrase, like “You’re the bee’s knees of brilliance!” or “You’ve got more zip than a lightning bolt!”— perfect for a quick smile or even learning some colorful English compliments. Whether you’re feeling down or just need a boost, our wheel is here to lift spirits and spark positivity. It’s simple: spin, get a compliment, and share the good vibes with friends. Imagine the ripple effect—one kind word can turn a frown upside down! We created this site to celebrate creativity and kindness, blending silly sayings with heartfelt cheer. It’s also a fun way to explore English expressions — think of it as a lighthearted language lesson wrapped in a game. From “You’re a peach of pure perfection!” to “Your cool factor is off the charts!” every phrase is a little gift. So go ahead—spin to “Be the Good,” share the love, and let’s make the world a happier place together!</p>
+            </div>
+            <div class="samples">
+                <h2>Sample Compliments</h2>
+                <p>Try these English gems—spin for more!</p>
+                <ul>
+                    <li>“You’re the sprinkles on life’s cupcake!”</li>
+                    <li>“You’ve got more pizzazz than a parade!”</li>
+                    <li>“You’re a whirlwind of pure delight!”</li>
+                    <li>“Your laugh could cure Monday blues!”</li>
+                    <li>“You’re the cat’s pajamas of positivity!”</li>
+                </ul>
             </div>
         </div>
         <div class="right-sidebar">
@@ -503,52 +545,112 @@
             "Your charm could charm a chilly chameleon!",
             "You’re the glow that grows on everyone!",
             "You’ve got a zing that zings with zest!",
-            "You’re a whirl of wonder in every whirl!"
+            "You’re a whirl of wonder in every whirl!",
+            "You’re the bee’s knees of brilliance!",
+            "You’ve got more zip than a lightning bolt!",
+            "You’re a peach of pure perfection!",
+            "Your cool factor is off the charts!",
+            "You’re the cat’s pajamas of positivity!",
+            "You’ve got a sparkle that could light up a cave!",
+            "You’re a barrel of laughs in a world of frowns!",
+            "Your charm’s got more pull than a tractor beam!",
+            "You’re the icing on life’s sweetest roll!",
+            "You’ve got more bounce than a pogo stick pro!",
+            "You’re a dynamo of downright delight!",
+            "Your grin’s got more watts than a power plant!",
+            "You’re the cream of the crop in coolness!",
+            "You’ve got a flair that flips the script!",
+            "You’re a hoot and a half of happiness!",
+            "Your vibe’s got more groove than a funky beat!",
+            "You’re the top banana in a bunch of awesome!",
+            "You’ve got more gusto than a gale-force wind!",
+            "You’re a whirlwind of wit and wonder!",
+            "Your sparkle could outshine a chandelier!",
+            "You’re the cherry bomb of cheer!",
+            "You’ve got a glow that grows on a dime!",
+            "You’re a riot of radiance and revelry!",
+            "Your pep could perk up a sleepy sloth!",
+            "You’re the bee’s buzz in a hive of happy!",
+            "You’ve got more sass than a sassy swan!",
+            "You’re a firework of fantastic fun!",
+            "Your charm’s got more magic than a wand wave!",
+            "You’re the jolt that jazzes up the joint!",
+            "You’ve got a twinkle that twinkles all night!",
+            "You’re a blast of bliss in every breath!",
+            "Your spirit’s got more lift than a hot air balloon!",
+            "You’re the zing in life’s zestiest zip!",
+            "You’ve got a bounce that bops the blues away!",
+            "You’re a ray of rapture in every ray!",
+            "Your coolness could chill a hot summer day!",
+            "You’re the dazzle that dazes the doldrums!",
+            "You’ve got more snap than a snapping turtle!",
+            "You’re a whirlwind of wowza and whimsy!",
+            "Your grin’s got more glee than a giggle fest!",
+            "You’re the pop that pops life’s popcorn!",
+            "You’ve got a flair that flares up the fiesta!",
+            "You’re a burst of brilliance beyond the brim!",
+            "Your vibe’s got more verve than a victory lap!",
+            "You’re the skip that skips through the storm!",
+            "You’ve got a glow that glows like a gem!",
+            "You’re a hoot of happiness in every holler!",
+            "Your charm could charm a grumpy grizzly!",
+            "You’re the zip that zips up the zest!"
         ];
 
-        let currentRotation = 0;
-        let usedCompliments = [];
-        let currentCompliment = "Spin for a surprise boost!";
+         let currentRotation = 0;
+    let usedCompliments = [];
+    let currentCompliment = "Spin for a surprise compliment!";
 
-        function spinWheel() {
-            const wheel = document.getElementById("wheel");
-            const spinButton = document.getElementById("spinButton");
-            const complimentElement = document.getElementById("compliment");
-            const shareTwitter = document.getElementById("shareTwitter");
+    function spinWheel() {
+        const wheel = document.getElementById("wheel");
+        const spinButton = document.getElementById("spinButton");
+        const complimentElement = document.getElementById("compliment");
+        const shareTwitter = document.getElementById("shareTwitter");
+        const shareFacebook = document.getElementById("shareFacebook");
 
-            spinButton.disabled = true;
+        spinButton.disabled = true;
 
-            const extraSpins = Math.floor(Math.random() * 2) + 3;
-            const newRotation = currentRotation + (extraSpins * 360);
-            wheel.style.transition = "transform 3s ease-out";
-            wheel.style.transform = `rotate(${newRotation}deg)`;
+        const extraSpins = Math.floor(Math.random() * 2) + 3;
+        const newRotation = currentRotation + (extraSpins * 360);
+        wheel.style.transition = "transform 3s ease-out";
+        wheel.style.transform = `rotate(${newRotation}deg)`;
 
-            currentRotation = newRotation;
+        currentRotation = newRotation;
 
+        setTimeout(() => {
+            let availableCompliments = compliments.filter(c => !usedCompliments.includes(c));
+            if (availableCompliments.length === 0) {
+                usedCompliments = [];
+                availableCompliments = compliments.slice();
+            }
+
+            const randomIndex = Math.floor(Math.random() * availableCompliments.length);
+            currentCompliment = availableCompliments[randomIndex];
+            usedCompliments.push(currentCompliment);
+
+            complimentElement.style.animation = "none";
             setTimeout(() => {
-                let availableCompliments = compliments.filter(c => !usedCompliments.includes(c));
-                if (availableCompliments.length === 0) {
-                    usedCompliments = [];
-                    availableCompliments = compliments.slice();
-                }
+                complimentElement.innerText = currentCompliment;
+                complimentElement.style.animation = "slideUp 0.5s ease forwards";
+                const shareText = encodeURIComponent(`"${currentCompliment}" Check out ComplimentWheel.com!`);
+                shareTwitter.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent('https://complimentwheel.com')}`;
+                shareTwitter.style.pointerEvents = "auto";
+                shareTwitter.style.opacity = "1";
+                shareFacebook.onclick = () => {
+                    window.open(
+                        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://complimentwheel.com')}&quote=${encodeURIComponent(currentCompliment)}`,
+                        'facebook-share',
+                        'width=600,height=400'
+                    );
+                    return false;
+                };
+                shareFacebook.style.pointerEvents = "auto";
+                shareFacebook.style.opacity = "1";
+            }, 10);
 
-                const randomIndex = Math.floor(Math.random() * availableCompliments.length);
-                currentCompliment = availableCompliments[randomIndex];
-                usedCompliments.push(currentCompliment);
-
-                complimentElement.style.animation = "none";
-                setTimeout(() => {
-                    complimentElement.innerText = currentCompliment;
-                    complimentElement.style.animation = "slideUp 0.5s ease forwards";
-                    const shareText = encodeURIComponent(`"${currentCompliment}"\nGet your compliment now at ComplimentWheel.com!`);
-                    shareTwitter.href = `https://twitter.com/intent/tweet?text=${shareText}`;
-                    shareTwitter.style.pointerEvents = "auto";
-                    shareTwitter.style.opacity = "1";
-                }, 10);
-
-                spinButton.disabled = false;
-            }, 3000);
-        }
-    </script>
+            spinButton.disabled = false;
+        }, 3000);
+    }
+</script>
 </body>
 </html>
