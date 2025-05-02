@@ -1,290 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFCDGN0KCE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EFCDGN0KCE');
-    </script>
-    <!-- Google AdSense Verification -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8494086888842655" crossorigin="anonymous"></script>
-    <!-- Twitter Card Metadata -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="https://complimentwheel.com/wheel.png">
-    <meta name="twitter:title" content="Compliment Wheel">
-    <!-- Open Graph Metadata for Facebook -->
-    <meta property="og:title" content="Compliment Wheel - Spin for Positivity">
-    <meta property="og:description" content="Spin for a unique compliment and spread the good vibes!">
-    <meta property="og:image" content="https://complimentwheel.com/wheel.png">
-    <meta property="og:url" content="https://complimentwheel.com">
     <meta charset="UTF-8">
-    <meta name="description" content="Spin the Compliment Wheel for a fun, unique compliment! Brighten your day and share the positivity.">
-    <meta name="keywords" content="compliment wheel, spin for compliments, positive quotes, fun game, compliment generator">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spin the Compliment Wheel for a fun, unique compliment! Brighten your day, learn playful English phrases, and share the positivity with friends.">
+    <meta name="keywords" content="compliment wheel, spin for compliments, positive quotes, fun game, compliment generator, daily positivity">
     <title>Compliment Wheel - Spin for a Compliment</title>
     <link rel="icon" type="image/png" href="favicon.png">
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        padding-bottom: 60px;
-        font-family: 'Comic Sans MS', 'Arial', sans-serif;
-        background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow-y: auto;
-    }
-    .wrapper {
-        display: flex;
-        max-width: 1200px;
-        width: 100%;
-        padding: 20px;
-        flex-wrap: nowrap;
-    }
-    .left-sidebar {
-        flex: 1;
-        margin-right: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    .generator {
-        flex: 2;
-        text-align: center;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        animation: fadeIn 1s ease-in;
-    }
-    .right-sidebar {
-        flex: 1;
-        margin-left: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    h1 {
-        font-size: 48px;
-        background: linear-gradient(90deg, #ff4757, #ff1493, #1e90ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.5);
-        margin-bottom: 15px;
-        animation: bounceIn 1.5s ease infinite alternate;
-    }
-    .intro, .prompt, .samples {
-        font-size: 20px;
-        color: #2f3542;
-        margin-bottom: 20px;
-    }
-    .samples ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    .samples li {
-        margin: 10px 0;
-        font-size: 18px;
-    }
-    .wheel {
-        width: 200px;
-        height: 200px;
-        background: url('wheel.png') no-repeat center;
-        background-size: cover;
-        margin: 0 auto 20px;
-        border-radius: 50%;
-        position: relative;
-        cursor: pointer;
-    }
-    .spin-button {
-        padding: 15px 30px;
-        font-size: 20px;
-        color: white;
-        background: #1e90ff;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: transform 0.3s, background 0.3s;
-    }
-    .spin-button:hover {
-        transform: scale(1.1);
-        background: #ff1493;
-    }
-    .spin-button:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-        transform: none;
-    }
-    #compliment {
-        font-size: 28px;
-        color: #2f3542;
-        margin: 30px 0 20px;
-        padding: 20px;
-        background: #f1f2f6;
-        border-radius: 15px;
-        opacity: 0;
-        animation: slideUp 0.5s ease forwards;
-    }
-    .share-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .share-twitter, .share-facebook {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 20px;
-        font-size: 16px;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        text-decoration: none;
-        transition: background 0.3s;
-        pointer-events: none;
-        opacity: 0.5;
-    }
-    .share-twitter {
-        background: #1DA1F2;
-    }
-    .share-twitter:hover {
-        background: #0d8ddb;
-    }
-    .share-facebook {
-        background: #1877F2;
-    }
-    .share-facebook:hover {
-        background: #145dbf;
-    }
-    .share-icon {
-        margin-right: 8px;
-        font-size: 18px;
-    }
-    .contact-us {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        color: #ff4757;
-        background: #fff3e6;
-        border-radius: 25px;
-        text-decoration: none;
-        transition: background 0.3s, color 0.3s;
-    }
-    .contact-us:hover {
-        background: #ff1493;
-        color: white;
-    }
-    .ad-space {
-        margin-bottom: 20px;
-        padding: 15px;
-        background: #fff3e6;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .ad-space img {
-        width: 250px;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 10px;
-        display: block;
-        margin: 0 auto 10px;
-    }
-    .ad-space a {
-        text-decoration: none;
-        color: #ff4757;
-        font-weight: bold;
-    }
-    .ad-space a:hover {
-        color: #ff1493;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    @keyframes slideUp {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-    @keyframes bounceIn {
-        0% { transform: scale(0.95); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
-    .particles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-    .particle {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        animation: float 5s infinite ease-in-out;
-    }
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0); }
-    }
-    @media (max-width: 768px) {
-        .wrapper {
-            flex-direction: column;
-            width: 100%;
-            padding: 10px;
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #ff1493;
+            --dark-text: #2f3542;
+            --light-text: #f1f2f6;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --border-radius: 20px;
+            --transition-speed: 0.3s;
         }
-        .left-sidebar, .generator, .right-sidebar {
-            flex: none;
-            width: 100%;
-            margin: 10px 0;
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            padding-bottom: 60px;
+            font-family: 'Nunito', 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            margin: 40px auto;
+        }
+        
         .generator {
-            order: 1;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            animation: fadeIn 1s ease-in;
         }
-        .right-sidebar {
-            order: 2;
+        
+        h1 {
+            font-size: 48px;
+            background: linear-gradient(90deg, #ff4757, #ff1493, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.5);
+            margin-bottom: 15px;
+            font-weight: 700;
         }
-        .left-sidebar {
-            order: 3;
+        
+        h2 {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin: 25px 0 15px;
+            font-weight: 600;
         }
-    }
-    .about {
-        font-size: 18px;
-        color: #2f3542;
-        margin-top: 20px;
-        padding: 15px;
-        background: #f1f2f6;
-        border-radius: 10px;
-    }
-    .about h2 {
-        font-size: 24px;
-        color: #ff4757;
-        margin-bottom: 10px;
-    }
-    .footer {
-        text-align: center;
-        font-size: 14px;
-        color: #fff;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.4);
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        box-sizing: border-box;
-    }
-</style>
+        
+        .intro {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+        }
+        
+        .prompt {
+            font-size: 22px;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .samples {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin: 30px 0;
+            background: #f1f2f6;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .samples ul {
+            list-style-type: none;
+            padding: 15px 0;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .samples li {
+            margin: 10px 0;
+            font-size: 18px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .samples li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+        
+        .wheel-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .wheel {
+            width: 200px;
+            height: 200px;
+            background: url('wheel.png') no-repeat center;
+            background-size: cover;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .wheel-pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-color);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            z-index: 2;
+        }
+        
+        .spin-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            background: #1e90ff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform var(--transition-speed), background var(--transition-speed);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .spin-button:hover {
+            transform: scale(1.1);
+            background: var(--accent-color);
+        }
+        
+        .spin-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        #compliment {
+            font-size: 28px;
+            color: var(--dark-text);
+            margin: 30px 0 20px;
+            padding: 20px;
+            background: #f1f2f6;
+            border-radius: 15px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .share-twitter, .share-facebook {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background var(--transition-speed), transform var(--transition-speed);
+            pointer-events: none;
+            opacity: 0.5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .share-twitter {
+            background: #1DA1F2;
+        }
+        
+        .share-twitter:hover {
+            background: #0d8ddb;
+            transform: translateY(-2px);
+        }
+        
+        .share-facebook {
+            background: #1877F2;
+        }
+        
+        .share-facebook:hover {
+            background: #145dbf;
+            transform: translateY(-2px);
+        }
+        
+        .share-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .contact-us {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: var(--accent-color);
+            background: #fff3e6;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background var(--transition-speed), color var(--transition-speed);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+        
+        .contact-us:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .about {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin: 30px 0;
+            padding: 20px;
+            background: #f1f2f6;
+            border-radius: 15px;
+            text-align: left;
+            line-height: 1.8;
+        }
+        
+        .about p {
+            margin-bottom: 15px;
+        }
+        
+        .first-time-modal,
+        .favorites-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .first-time-modal.show,
+        .favorites-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+        
+        .modal-text {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .modal-button {
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background var(--transition-speed);
+        }
+        
+        .modal-button:hover {
+            background: #d91380;
+        }
+        
+        .favorites-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .favorite-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        .favorite-item:last-child {
+            border-bottom: none;
+        }
+        
+        .remove-favorite {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #ff4757;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .no-favorites-message {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+        
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
+            transition: color var(--transition-speed);
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+        
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        .streak-counter {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .streak-counter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .streak-icon {
+            font-size: 20px;
+        }
+        
+        .streak-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-button {
+            padding: 10px 20px;
+            background: #e6e6e6;
+            color: var(--dark-text);
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background var(--transition-speed), transform var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .action-button:hover {
+            background: #d9d9d9;
+            transform: translateY(-2px);
+        }
+        
+        .action-button-icon {
+            font-size: 18px;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 20px auto;
+            }
+            
+            .generator {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .intro {
+                font-size: 16px;
+            }
+            
+            .wheel {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .wheel-container {
+                width: 170px;
+                height: 170px;
+            }
+            
+            #compliment {
+                font-size: 20px;
+                padding: 15px;
+                min-height: 80px;
+            }
+            
+            .samples li {
+                font-size: 16px;
+            }
+            
+            .about {
+                font-size: 16px;
+                padding: 15px;
+            }
+            
+            .spin-button {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+            
+            .share-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .share-twitter, .share-facebook {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .generator {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .prompt {
+                font-size: 18px;
+            }
+            
+            .intro, .about, .samples {
+                font-size: 15px;
+            }
+            
+            #compliment {
+                font-size: 18px;
+                min-height: 70px;
+            }
+            
+            .wheel {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .wheel-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .contact-us {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            
+            .spin-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .samples li {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="particles">
@@ -293,31 +656,71 @@
         <div class="particle" style="left: 50%; top: 70%; animation-delay: 2s;"></div>
         <div class="particle" style="left: 70%; top: 30%; animation-delay: 3s;"></div>
         <div class="particle" style="left: 90%; top: 60%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 20%; top: 80%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 80%; top: 15%; animation-delay: 3.5s;"></div>
+        <div class="particle" style="left: 40%; top: 40%; animation-delay: 1.5s;"></div>
     </div>
-    <div class="wrapper">
-        <div class="left-sidebar">
-            <div class="ad-space">
-                <a href="https://www.untoldstorieshistory.com/" target="_blank">
-                    <img src="history_ad.jpg" alt="Untold Stories History">
-                    <p>Discover Hidden Tales at Untold Stories History — Explore Now!</p>
-                </a>
-            </div>
-            <div class="ad-space">
-                <a href="https://spinthebattrivia.com" target="_blank">
-                    <img src="baseball_ad.png" alt="Spin the Bat Trivia">
-                    <p>Spin the Bat Trivia: Test Your Baseball Knowledge! Visit Now!</p>
-                </a>
-            </div>
+    
+    <!-- First-time visitor modal -->
+    <div class="first-time-modal" id="firstTimeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <h2 class="modal-title">Welcome to Compliment Wheel!</h2>
+            <p class="modal-text">Spin the wheel to receive your first compliment! Get a daily dose of positivity with fun, quirky English phrases that will brighten your day.</p>
+            <button class="modal-button" id="startSpinning">Let's Get Started!</button>
         </div>
-        <div class="generator">
-            <div class="intro">
-                Welcome to Compliment Wheel! Spin for positivity and a fun way to learn English phrases! “Be the Good” with every click — get a quirky compliment, share the vibe, and enjoy playful language like “You’re a superhero without the cape!” With hundreds of unique spins, it’s your daily dose of joy. Ready to brighten your day?
+    </div>
+    
+    <!-- Favorites Modal -->
+    <div class="favorites-modal" id="favoritesModal">
+        <div class="modal-content">
+            <button class="modal-close" id="favoritesClose">×</button>
+            <h2 class="modal-title">Your Favorite Compliments</h2>
+            <div class="favorites-list" id="favoritesList">
+                <p class="no-favorites-message">You haven't saved any favorites yet.</p>
             </div>
+            <button class="modal-button" id="closeFavorites">Close</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="generator">
             <h1>Compliment Wheel</h1>
+            
+            <div class="intro">
+                <p>Welcome to Compliment Wheel! Spin for positivity and a fun way to discover playful English phrases!</p>
+                <p>"Be the Good" with every click — get a quirky compliment like "You're a superhero without the cape!" or "Your smile could power a city of grins!"</p>
+                <p>With hundreds of unique spins, it's your daily dose of joy. Ready to brighten your day?</p>
+            </div>
+            
+            <div class="streak-counter" id="streakCounter">
+                <span class="streak-icon">🔥</span>
+                <span class="streak-text">Day streak: <span id="streakCount">0</span></span>
+            </div>
+            
             <div class="prompt">Compliments to Make Your Day—Spin Now!</div>
-            <div class="wheel" id="wheel" onclick="spinWheel()"></div>
-            <button class="spin-button" id="spinButton" onclick="spinWheel()">Spin the Wheel!</button>
+            
+            <div class="wheel-container">
+                <div class="wheel-pointer"></div>
+                <div class="wheel" id="wheel" aria-label="Compliment Wheel" role="button" tabindex="0"></div>
+            </div>
+            
+            <button class="spin-button" id="spinButton" aria-label="Spin the Wheel for a Compliment">Spin the Wheel!</button>
+            
             <p id="compliment">Spin for a surprise compliment!</p>
+            
+            <div class="action-buttons" id="actionButtons" style="display: none;">
+                <button class="action-button" id="spinAgainBtn">
+                    <span class="action-button-icon">🔄</span> Spin Again
+                </button>
+                <button class="action-button" id="favoriteBtn">
+                    <span class="action-button-icon">❤️</span> Save as Favorite
+                </button>
+                <button class="action-button" id="viewFavoritesBtn">
+                    <span class="action-button-icon">📋</span> View Favorites
+                </button>
+            </div>
+            
             <div class="share-buttons">
                 <a href="#" id="shareTwitter" class="share-twitter" target="_blank">
                     <span class="share-icon">🐦</span> Tweet
@@ -326,322 +729,517 @@
                     <span class="share-icon">📘</span> Share
                 </a>
             </div>
-            <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
+            
             <div class="about">
                 <h2>Why Spin the Compliment Wheel?</h2>
-                <p>At Compliment Wheel, we’re all about spreading joy — one spin at a time. With over hundreds of unique, handcrafted compliments, it’s a playful way to brighten your day or someone else’s. But it’s more than just fun, it’s a chance to “Be the Good” in a world that needs it. Each spin delivers a quirky English phrase, like “You’re the bee’s knees of brilliance!” or “You’ve got more zip than a lightning bolt!”— perfect for a quick smile or even learning some colorful English compliments. Whether you’re feeling down or just need a boost, our wheel is here to lift spirits and spark positivity. It’s simple: spin, get a compliment, and share the good vibes with friends. Imagine the ripple effect—one kind word can turn a frown upside down! We created this site to celebrate creativity and kindness, blending silly sayings with heartfelt cheer. It’s also a fun way to explore English expressions — think of it as a lighthearted language lesson wrapped in a game. From “You’re a peach of pure perfection!” to “Your cool factor is off the charts!” every phrase is a little gift. So go ahead—spin to “Be the Good,” share the love, and let’s make the world a happier place together!</p>
+                <p>At Compliment Wheel, we're all about spreading joy — one spin at a time. With over hundreds of unique, handcrafted compliments, it's a playful way to brighten your day or someone else's.</p>
+                <p>But it's more than just fun, it's a chance to "Be the Good" in a world that needs it. Each spin delivers a quirky English phrase, perfect for a quick smile or even learning some colorful English expressions.</p>
+                <p>Whether you're feeling down or just need a boost, our wheel is here to lift spirits and spark positivity. Imagine the ripple effect—one kind word can turn a frown upside down!</p>
             </div>
+            
             <div class="samples">
                 <h2>Sample Compliments</h2>
                 <p>Try these English gems—spin for more!</p>
                 <ul>
-                    <li>“You’re the sprinkles on life’s cupcake!”</li>
-                    <li>“You’ve got more pizzazz than a parade!”</li>
-                    <li>“You’re a whirlwind of pure delight!”</li>
-                    <li>“Your laugh could cure Monday blues!”</li>
-                    <li>“You’re the cat’s pajamas of positivity!”</li>
+                    <li>"You're the sprinkles on life's cupcake!"</li>
+                    <li>"You've got more pizzazz than a parade!"</li>
+                    <li>"You're a whirlwind of pure delight!"</li>
+                    <li>"Your laugh could cure Monday blues!"</li>
+                    <li>"You're the cat's pajamas of positivity!"</li>
                 </ul>
             </div>
-        </div>
-        <div class="right-sidebar">
-            <div class="ad-space">
-                <a href="https://www.amazon.com/Hop-into-Easter-Coloring-Colorful/dp/B0DZXZYHKF" target="_blank">
-                    <img src="easter_ad.jpg" alt="Hop into Easter Coloring Book">
-                    <p>Hop into Easter: A Cute and Colorful Coloring Book for Kids! Get it now on Amazon.</p>
-                </a>
-            </div>
-            <div class="ad-space">
-                <a href="https://www.amazon.com/dp/B0F2FJLVR2" target="_blank">
-                    <img src="train_ad.jpg" alt="All Aboard! 50 Coloring Vintage Trains">
-                    <p>Color 50 vintage trains from history’s rails—fun for all ages! Get yours on Amazon.</p>
-                </a>
-            </div>
+            
+            <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
         </div>
     </div>
+    
     <footer class="footer">
-        <p>© 2025 Compliment Wheel. All rights reserved.</p>
+        <p>© 2025 Compliment Wheel. All rights reserved. | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
     </footer>
+    
     <script>
+        // Array of compliments
         const compliments = [
-            "You’re a walking burst of sunshine!",
+            "You're a walking burst of sunshine!",
             "Your coolness could freeze a volcano.",
-            "You’ve got the charm of a thousand puppies.",
-            "You’re the human version of a perfect playlist.",
+            "You've got the charm of a thousand puppies.",
+            "You're the human version of a perfect playlist.",
             "Your awesomeness deserves its own theme song.",
-            "You’re so great, even clouds part for you.",
-            "You’ve got a smile that could melt glaciers.",
-            "You’re a genius wrapped in a taco of talent.",
+            "You're so great, even clouds part for you.",
+            "You've got a smile that could melt glaciers.",
+            "You're a genius wrapped in a taco of talent.",
             "Your energy could power a dance party.",
-            "You’re cooler than a polar bear in shades.",
-            "You’re a legend in a world of footnotes.",
+            "You're cooler than a polar bear in shades.",
+            "You're a legend in a world of footnotes.",
             "Your vibe is pure glitter and magic.",
-            "You’re the sprinkles on life’s cupcake.",
-            "You’ve got swagger that outshines the sun.",
-            "You’re a rare gem in a pile of pebbles.",
+            "You're the sprinkles on life's cupcake.",
+            "You've got swagger that outshines the sun.",
+            "You're a rare gem in a pile of pebbles.",
             "Your laugh could cure Monday blues.",
-            "You’re so epic, myths are written about you.",
-            "You’re a high-five waiting to happen.",
+            "You're so epic, myths are written about you.",
+            "You're a high-five waiting to happen.",
             "Your brilliance lights up the room.",
-            "You’re the cherry on top of awesome.",
-            "You’ve got more sparkle than a disco ball.",
-            "You’re a superhero without the cape.",
+            "You're the cherry on top of awesome.",
+            "You've got more sparkle than a disco ball.",
+            "You're a superhero without the cape.",
             "Your style could start a revolution.",
-            "You’re the MVP of being yourself.",
-            "You’ve got a heart bigger than the moon.",
-            "You’re a whirlwind of pure delight.",
+            "You're the MVP of being yourself.",
+            "You've got a heart bigger than the moon.",
+            "You're a whirlwind of pure delight.",
             "Your creativity could paint the sky.",
-            "You’re so smooth, butter’s jealous.",
-            "You’re a star that forgot to dim.",
+            "You're so smooth, butter's jealous.",
+            "You're a star that forgot to dim.",
             "Your presence is a gift to the universe.",
-            "You’ve got more pizzazz than a parade.",
-            "You’re the secret ingredient to fun.",
-            "You’re a masterpiece in sneakers.",
+            "You've got more pizzazz than a parade.",
+            "You're the secret ingredient to fun.",
+            "You're a masterpiece in sneakers.",
             "Your kindness could hug the world.",
-            "You’re so rad, retro’s making a comeback.",
-            "You’ve got the guts of a lion and the grin to match.",
-            "You’re a fireworks show in human form.",
+            "You're so rad, retro's making a comeback.",
+            "You've got the guts of a lion and the grin to match.",
+            "You're a fireworks show in human form.",
             "Your ideas could launch a rocket.",
-            "You’re the coolest breeze on a hot day.",
-            "You’ve got more flair than a flamingo.",
-            "You’re a treasure chest of good vibes.",
+            "You're the coolest breeze on a hot day.",
+            "You've got more flair than a flamingo.",
+            "You're a treasure chest of good vibes.",
             "Your spirit could outdance a storm.",
-            "You’re so sharp, you could cut through chaos.",
-            "You’ve got the glow of a thousand fireflies.",
-            "You’re a unicorn in a field of horses.",
+            "You're so sharp, you could cut through chaos.",
+            "You've got the glow of a thousand fireflies.",
+            "You're a unicorn in a field of horses.",
             "Your wit could win any showdown.",
-            "You’re the life of every party, even solo ones.",
-            "You’ve got more bounce than a kangaroo.",
-            "You’re a symphony of spectacular.",
-            "You’re so fantastic, reality feels jealous.",
-            "You’re a cosmic explosion of cool!",
+            "You're the life of every party, even solo ones.",
+            "You've got more bounce than a kangaroo.",
+            "You're a symphony of spectacular.",
+            "You're so fantastic, reality feels jealous.",
+            "You're a cosmic explosion of cool!",
             "Your grin could outshine a supernova.",
-            "You’ve got the bounce of a rubber ball on a trampoline.",
-            "You’re a ninja of niceness!",
+            "You've got the bounce of a rubber ball on a trampoline.",
+            "You're a ninja of niceness!",
             "Your charm could tame a wild dragon.",
-            "You’re the fizz in life’s soda pop.",
-            "You’ve got more groove than a vinyl record.",
-            "You’re a rainbow in a black-and-white world.",
+            "You're the fizz in life's soda pop.",
+            "You've got more groove than a vinyl record.",
+            "You're a rainbow in a black-and-white world.",
             "Your sparkle could dazzle a diamond.",
-            "You’re the captain of the cool ship!",
-            "You’ve got a laugh that echoes through galaxies.",
-            "You’re a whirlwind of whimsy!",
+            "You're the captain of the cool ship!",
+            "You've got a laugh that echoes through galaxies.",
+            "You're a whirlwind of whimsy!",
             "Your brilliance could blind a spotlight.",
-            "You’re the jelly to life’s peanut butter.",
-            "You’ve got more zest than a lemon grove.",
-            "You’re a walking, talking party starter!",
+            "You're the jelly to life's peanut butter.",
+            "You've got more zest than a lemon grove.",
+            "You're a walking, talking party starter!",
             "Your magic could make a wizard jealous.",
-            "You’re the beat in everyone’s favorite song.",
-            "You’ve got the glow of a neon sign.",
-            "You’re a tornado of terrific!",
+            "You're the beat in everyone's favorite song.",
+            "You've got the glow of a neon sign.",
+            "You're a tornado of terrific!",
             "Your sass could sass the sassiest cat.",
-            "You’re the frosting on life’s cake.",
-            "You’ve got more pep than a cheer squad.",
-            "You’re a comet streaking through the mundane!",
+            "You're the frosting on life's cake.",
+            "You've got more pep than a cheer squad.",
+            "You're a comet streaking through the mundane!",
             "Your quirks make the world quirkier.",
-            "You’re the snap, crackle, and pop of awesome!",
-            "You’ve got a spirit that soars like an eagle.",
-            "You’re a bubble of joy in a sea of blah.",
+            "You're the snap, crackle, and pop of awesome!",
+            "You've got a spirit that soars like an eagle.",
+            "You're a bubble of joy in a sea of blah.",
             "Your flair could flair up a flare!",
-            "You’re the twinkle in life’s eye.",
-            "You’ve got more gusto than a gusty day.",
-            "You’re a maestro of marvelous!",
+            "You're the twinkle in life's eye.",
+            "You've got more gusto than a gusty day.",
+            "You're a maestro of marvelous!",
             "Your vibe could vibe with a vibraphone.",
-            "You’re the glitter in a dull day’s glue.",
-            "You’ve got the spunk of a firecracker.",
-            "You’re a beacon of brilliance!",
+            "You're the glitter in a dull day's glue.",
+            "You've got the spunk of a firecracker.",
+            "You're a beacon of brilliance!",
             "Your energy could zap a thunderstorm.",
-            "You’re the skip in life’s hopscotch.",
-            "You’ve got more dazzle than a disco inferno.",
-            "You’re a supernova of silliness!",
+            "You're the skip in life's hopscotch.",
+            "You've got more dazzle than a disco inferno.",
+            "You're a supernova of silliness!",
             "Your charm could charm a charm bracelet.",
-            "You’re the pop in everyone’s popcorn.",
-            "You’ve got a strut that struts the strut!",
-            "You’re a kaleidoscope of kindness!",
+            "You're the pop in everyone's popcorn.",
+            "You've got a strut that struts the strut!",
+            "You're a kaleidoscope of kindness!",
             "Your wit could outwit a fox.",
-            "You’re the boom in life’s bang!",
-            "You’ve got more shine than a polished penny.",
-            "You’re a rocket of radness!",
+            "You're the boom in life's bang!",
+            "You've got more shine than a polished penny.",
+            "You're a rocket of radness!",
             "Your joy could jumpstart a jellybean jar.",
-            "You’re the ultimate boost in any room!",
-            "You’re a burst of joy that lights up any room!",
+            "You're the ultimate boost in any room!",
+            "You're a burst of joy that lights up any room!",
             "Your creativity could inspire a whole galaxy!",
-            "You’ve got the kind of sparkle that stars envy!",
-            "You’re a walking, talking happiness generator!",
+            "You've got the kind of sparkle that stars envy!",
+            "You're a walking, talking happiness generator!",
             "Your positivity could turn rain into rainbows!",
-            "You’ve got a flair that could dazzle a parade!",
-            "You’re the secret sauce to a perfect day!",
+            "You've got a flair that could dazzle a parade!",
+            "You're the secret sauce to a perfect day!",
             "Your energy is like a turbo boost of awesome!",
-            "You’re a ray of sunshine on a cloudy planet!",
-            "You’ve got a glow that could guide ships home!",
-            "You’re a whirlwind of wonder and delight!",
+            "You're a ray of sunshine on a cloudy planet!",
+            "You've got a glow that could guide ships home!",
+            "You're a whirlwind of wonder and delight!",
             "Your charm is like a magnet for good vibes!",
-            "You’re the glitter that makes life shimmer!",
-            "You’ve got a bounce that could lift a balloon!",
-            "You’re a masterpiece of mirth and magic!",
+            "You're the glitter that makes life shimmer!",
+            "You've got a bounce that could lift a balloon!",
+            "You're a masterpiece of mirth and magic!",
             "Your smile could power a city of grins!",
-            "You’re the zest that spices up the universe!",
-            "You’ve got a twinkle that outshines the night!",
-            "You’re a melody of merriment and cheer!",
+            "You're the zest that spices up the universe!",
+            "You've got a twinkle that outshines the night!",
+            "You're a melody of merriment and cheer!",
             "Your spirit could soar over mountaintops!",
-            "You’re the spark that ignites pure fun!",
-            "You’ve got a radiance that warms the soul!",
-            "You’re a tidal wave of terrific energy!",
-            "Your wit is sharper than a comet’s tail!",
-            "You’re the bubble that pops with joy!",
-            "You’ve got a vibe that could wake up the moon!",
-            "You’re a supernova of silliness and smiles!",
+            "You're the spark that ignites pure fun!",
+            "You've got a radiance that warms the soul!",
+            "You're a tidal wave of terrific energy!",
+            "Your wit is sharper than a comet's tail!",
+            "You're the bubble that pops with joy!",
+            "You've got a vibe that could wake up the moon!",
+            "You're a supernova of silliness and smiles!",
             "Your presence is like a party in a box!",
-            "You’re the dazzle in a world of dull!",
-            "You’ve got a pep that could pep up a panda!",
-            "You’re a whirlwind of whimsy and wow!",
+            "You're the dazzle in a world of dull!",
+            "You've got a pep that could pep up a panda!",
+            "You're a whirlwind of whimsy and wow!",
             "Your laugh is a symphony of sunshine!",
-            "You’re the bounce in life’s trampoline!",
-            "You’ve got a glow that could melt the ice caps!",
-            "You’re a rocket of radiance and glee!",
+            "You're the bounce in life's trampoline!",
+            "You've got a glow that could melt the ice caps!",
+            "You're a rocket of radiance and glee!",
             "Your charm could charm a flock of flamingos!",
-            "You’re the fizz that makes every moment pop!",
-            "You’ve got a spirit that dances with stars!",
-            "You’re a burst of brilliance in human form!",
+            "You're the fizz that makes every moment pop!",
+            "You've got a spirit that dances with stars!",
+            "You're a burst of brilliance in human form!",
             "Your energy could electrify a festival!",
-            "You’re the twirl in life’s happiest dance!",
-            "You’ve got a shine that could blind the sun!",
-            "You’re a kaleidoscope of cool and cheer!",
+            "You're the twirl in life's happiest dance!",
+            "You've got a shine that could blind the sun!",
+            "You're a kaleidoscope of cool and cheer!",
             "Your positivity could paint the sky pink!",
-            "You’re the zip that zaps up any day!",
-            "You’ve got a flair that flares up the fun!",
-            "You’re a beacon of bliss and brightness!",
+            "You're the zip that zaps up any day!",
+            "You've got a flair that flares up the fun!",
+            "You're a beacon of bliss and brightness!",
             "Your grin could launch a thousand giggles!",
-            "You’re the spark that starts every celebration!",
-            "You’ve got a zest that’s zestier than a lime!",
-            "You’re a jolt of jubilation in every step!",
+            "You're the spark that starts every celebration!",
+            "You've got a zest that's zestier than a lime!",
+            "You're a jolt of jubilation in every step!",
             "Your flair could flip a frown upside down!",
-            "You’ve got a zest that zings through the air!",
-            "You’re a prism of pure, playful light!",
+            "You've got a zest that zings through the air!",
+            "You're a prism of pure, playful light!",
             "Your cheer could cheer up a grumpy goblin!",
-            "You’re the whirl in a world of wow!",
-            "You’ve got a gleam that gleams like gold!",
-            "You’re a rush of rapture in every room!",
+            "You're the whirl in a world of wow!",
+            "You've got a gleam that gleams like gold!",
+            "You're a rush of rapture in every room!",
             "Your spunk could spark a spree of smiles!",
-            "You’re the hop in life’s happiest skip!",
-            "You’ve got a charm that chases clouds away!",
-            "You’re a fountain of fabulous fun!",
+            "You're the hop in life's happiest skip!",
+            "You've got a charm that chases clouds away!",
+            "You're a fountain of fabulous fun!",
             "Your glow could guide a galaxy home!",
-            "You’re the skip that makes hearts leap!",
-            "You’ve got a vibe that vibrates with victory!",
-            "You’re a blast of bliss beyond belief!",
+            "You're the skip that makes hearts leap!",
+            "You've got a vibe that vibrates with victory!",
+            "You're a blast of bliss beyond belief!",
             "Your spirit could spin the world with joy!",
-            "You’re the tickle in life’s funny bone!",
-            "You’ve got a bounce that beats the blues!",
-            "You’re a whirlwind of wild, wonderful glee!",
+            "You're the tickle in life's funny bone!",
+            "You've got a bounce that beats the blues!",
+            "You're a whirlwind of wild, wonderful glee!",
             "Your shine could shimmer through any shadow!",
-            "You’re the zap that zaps up every zone!",
-            "You’ve got a grin that grins at gravity!",
-            "You’re a burst of bubbly beyond compare!",
+            "You're the zap that zaps up every zone!",
+            "You've got a grin that grins at gravity!",
+            "You're a burst of bubbly beyond compare!",
             "Your energy could energize an elephant!",
-            "You’re the twist in life’s tastiest treat!",
-            "You’ve got a flair that flares with flair!",
-            "You’re a ripple of radiance in every wave!",
+            "You're the twist in life's tastiest treat!",
+            "You've got a flair that flares with flair!",
+            "You're a ripple of radiance in every wave!",
             "Your joy could jolt a jellyfish to dance!",
-            "You’re the spark that sparks a sunny spree!",
-            "You’ve got a pep that pops like popcorn!",
-            "You’re a dash of delight in every day!",
+            "You're the spark that sparks a sunny spree!",
+            "You've got a pep that pops like popcorn!",
+            "You're a dash of delight in every day!",
             "Your charm could charm a chilly chameleon!",
-            "You’re the glow that grows on everyone!",
-            "You’ve got a zing that zings with zest!",
-            "You’re a whirl of wonder in every whirl!",
-            "You’re the bee’s knees of brilliance!",
-            "You’ve got more zip than a lightning bolt!",
-            "You’re a peach of pure perfection!",
+            "You're the glow that grows on everyone!",
+            "You've got a zing that zings with zest!",
+            "You're a whirl of wonder in every whirl!",
+            "You're the bee's knees of brilliance!",
+            "You've got more zip than a lightning bolt!",
+            "You're a peach of pure perfection!",
             "Your cool factor is off the charts!",
-            "You’re the cat’s pajamas of positivity!",
-            "You’ve got a sparkle that could light up a cave!",
-            "You’re a barrel of laughs in a world of frowns!",
-            "Your charm’s got more pull than a tractor beam!",
-            "You’re the icing on life’s sweetest roll!",
-            "You’ve got more bounce than a pogo stick pro!",
-            "You’re a dynamo of downright delight!",
-            "Your grin’s got more watts than a power plant!",
-            "You’re the cream of the crop in coolness!",
-            "You’ve got a flair that flips the script!",
-            "You’re a hoot and a half of happiness!",
-            "Your vibe’s got more groove than a funky beat!",
-            "You’re the top banana in a bunch of awesome!",
-            "You’ve got more gusto than a gale-force wind!",
-            "You’re a whirlwind of wit and wonder!",
+            "You're the cat's pajamas of positivity!",
+            "You've got a sparkle that could light up a cave!",
+            "You're a barrel of laughs in a world of frowns!",
+            "Your charm's got more pull than a tractor beam!",
+            "You're the icing on life's sweetest roll!",
+            "You've got more bounce than a pogo stick pro!",
+            "You're a dynamo of downright delight!",
+            "Your grin's got more watts than a power plant!",
+            "You're the cream of the crop in coolness!",
+            "You've got a flair that flips the script!",
+            "You're a hoot and a half of happiness!",
+            "Your vibe's got more groove than a funky beat!",
+            "You're the top banana in a bunch of awesome!",
+            "You've got more gusto than a gale-force wind!",
+            "You're a whirlwind of wit and wonder!",
             "Your sparkle could outshine a chandelier!",
-            "You’re the cherry bomb of cheer!",
-            "You’ve got a glow that grows on a dime!",
-            "You’re a riot of radiance and revelry!",
+            "You're the cherry bomb of cheer!",
+            "You've got a glow that grows on a dime!",
+            "You're a riot of radiance and revelry!",
             "Your pep could perk up a sleepy sloth!",
-            "You’re the bee’s buzz in a hive of happy!",
-            "You’ve got more sass than a sassy swan!",
-            "You’re a firework of fantastic fun!",
-            "Your charm’s got more magic than a wand wave!",
-            "You’re the jolt that jazzes up the joint!",
-            "You’ve got a twinkle that twinkles all night!",
-            "You’re a blast of bliss in every breath!",
-            "Your spirit’s got more lift than a hot air balloon!",
-            "You’re the zing in life’s zestiest zip!",
-            "You’ve got a bounce that bops the blues away!",
-            "You’re a ray of rapture in every ray!",
+            "You're the bee's buzz in a hive of happy!",
+            "You've got more sass than a sassy swan!",
+            "You're a firework of fantastic fun!",
+            "Your charm's got more magic than a wand wave!",
+            "You're the jolt that jazzes up the joint!",
+            "You've got a twinkle that twinkles all night!",
+            "You're a blast of bliss in every breath!",
+            "Your spirit's got more lift than a hot air balloon!",
+            "You're the zing in life's zestiest zip!",
+            "You've got a bounce that bops the blues away!",
+            "You're a ray of rapture in every ray!",
             "Your coolness could chill a hot summer day!",
-            "You’re the dazzle that dazes the doldrums!",
-            "You’ve got more snap than a snapping turtle!",
-            "You’re a whirlwind of wowza and whimsy!",
-            "Your grin’s got more glee than a giggle fest!",
-            "You’re the pop that pops life’s popcorn!",
-            "You’ve got a flair that flares up the fiesta!",
-            "You’re a burst of brilliance beyond the brim!",
-            "Your vibe’s got more verve than a victory lap!",
-            "You’re the skip that skips through the storm!",
-            "You’ve got a glow that glows like a gem!",
-            "You’re a hoot of happiness in every holler!",
+            "You're the dazzle that dazes the doldrums!",
+            "You've got more snap than a snapping turtle!",
+            "You're a whirlwind of wowza and whimsy!",
+            "Your grin's got more glee than a giggle fest!",
+            "You're the pop that pops life's popcorn!",
+            "You've got a flair that flares up the fiesta!",
+            "You're a burst of brilliance beyond the brim!",
+            "Your vibe's got more verve than a victory lap!",
+            "You're the skip that skips through the storm!",
+            "You've got a glow that glows like a gem!",
+            "You're a hoot of happiness in every holler!",
             "Your charm could charm a grumpy grizzly!",
-            "You’re the zip that zips up the zest!"
+            "You're the zip that zips up the zest!"
         ];
 
+        // Fisher-Yates shuffle algorithm for more random compliments
+        function shuffleCompliments(array) {
+            const shuffled = [...array]; // Create a copy of the array
+            let currentIndex = shuffled.length;
+            let randomIndex;
+            
+            // While there remain elements to shuffle
+            while (currentIndex != 0) {
+                // Pick a remaining element
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                
+                // And swap it with the current element
+                [shuffled[currentIndex], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[currentIndex]];
+            }
+            
+            return shuffled;
+        }
+
+        // Initialize with shuffled compliments
+        let complimentQueue = shuffleCompliments(compliments);
         let currentRotation = 0;
-        let usedCompliments = [];
         let currentCompliment = "Spin for a surprise compliment!";
-
-        function spinWheel() {
-            const wheel = document.getElementById("wheel");
-            const spinButton = document.getElementById("spinButton");
-            const complimentElement = document.getElementById("compliment");
-            const shareTwitter = document.getElementById("shareTwitter");
-            const shareFacebook = document.getElementById("shareFacebook");
-
-            spinButton.disabled = true;
-
-            const extraSpins = Math.floor(Math.random() * 2) + 3;
-            const newRotation = currentRotation + (extraSpins * 360);
-            wheel.style.transition = "transform 3s ease-out";
-            wheel.style.transform = `rotate(${newRotation}deg)`;
-
-            currentRotation = newRotation;
-
-            setTimeout(() => {
-                let availableCompliments = compliments.filter(c => !usedCompliments.includes(c));
-                if (availableCompliments.length === 0) {
-                    usedCompliments = [];
-                    availableCompliments = compliments.slice();
+        let spinCount = 0;
+        let streakDays = 0;
+        let favorites = [];
+        
+        // DOM Elements
+        const wheel = document.getElementById("wheel");
+        const spinButton = document.getElementById("spinButton");
+        const complimentElement = document.getElementById("compliment");
+        const shareTwitter = document.getElementById("shareTwitter");
+        const shareFacebook = document.getElementById("shareFacebook");
+        const firstTimeModal = document.getElementById("firstTimeModal");
+        const modalClose = document.getElementById("modalClose");
+        const startSpinning = document.getElementById("startSpinning");
+        const streakCounter = document.getElementById("streakCounter");
+        const streakCount = document.getElementById("streakCount");
+        const actionButtons = document.getElementById("actionButtons");
+        const spinAgainBtn = document.getElementById("spinAgainBtn");
+        const favoriteBtn = document.getElementById("favoriteBtn");
+        const viewFavoritesBtn = document.getElementById("viewFavoritesBtn");
+        const favoritesModal = document.getElementById("favoritesModal");
+        const favoritesClose = document.getElementById("favoritesClose");
+        const closeFavorites = document.getElementById("closeFavorites");
+        const favoritesList = document.getElementById("favoritesList");
+        
+        // First-time visitor check
+        function checkFirstTimeVisitor() {
+            if (!localStorage.getItem('visited')) {
+                firstTimeModal.classList.add('show');
+                localStorage.setItem('visited', 'true');
+            }
+        }
+        
+        // Check and update streak
+        function checkStreak() {
+            const lastVisit = localStorage.getItem('lastVisit');
+            const today = new Date().toDateString();
+            
+            if (lastVisit) {
+                const lastDate = new Date(lastVisit);
+                const currentDate = new Date(today);
+                
+                // Calculate the difference in days
+                const timeDiff = currentDate.getTime() - lastDate.getTime();
+                const dayDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+                
+                if (dayDiff === 1) {
+                    // User visited yesterday, increment streak
+                    streakDays = parseInt(localStorage.getItem('streakDays') || '0') + 1;
+                } else if (dayDiff > 1) {
+                    // User missed days, reset streak
+                    streakDays = 1;
+                } else if (dayDiff === 0) {
+                    // Same day visit, keep streak
+                    streakDays = parseInt(localStorage.getItem('streakDays') || '0');
                 }
-
-                const randomIndex = Math.floor(Math.random() * availableCompliments.length);
-                currentCompliment = availableCompliments[randomIndex];
-                usedCompliments.push(currentCompliment);
-
+            } else {
+                // First visit ever
+                streakDays = 1;
+            }
+            
+            localStorage.setItem('lastVisit', today);
+            localStorage.setItem('streakDays', streakDays.toString());
+            
+            // Update UI
+            streakCount.textContent = streakDays;
+            
+            if (streakDays > 1) {
+                streakCounter.classList.add('visible');
+            }
+        }
+        
+        // Load favorites from localStorage
+        function loadFavorites() {
+            const storedFavorites = localStorage.getItem('favorites');
+            if (storedFavorites) {
+                favorites = JSON.parse(storedFavorites);
+            }
+        }
+        
+        // Save favorites to localStorage
+        function saveFavorites() {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+        
+        // Add current compliment to favorites
+        function addToFavorites() {
+            if (currentCompliment !== "Spin for a surprise compliment!" && !favorites.includes(currentCompliment)) {
+                favorites.push(currentCompliment);
+                saveFavorites();
+                favoriteBtn.innerHTML = '<span class="action-button-icon">❤️</span> Saved!';
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    favoriteBtn.innerHTML = '<span class="action-button-icon">❤️</span> Save as Favorite';
+                }, 2000);
+            }
+        }
+        
+        // Show favorites modal
+        function showFavorites() {
+            // Clear the list
+            favoritesList.innerHTML = '';
+            
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = '<p class="no-favorites-message">You haven\'t saved any favorites yet.</p>';
+            } else {
+                // Add each favorite to the list
+                favorites.forEach((fav, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'favorite-item';
+                    item.innerHTML = `${fav} <button class="remove-favorite" data-index="${index}">✕</button>`;
+                    favoritesList.appendChild(item);
+                });
+                
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-favorite').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        favorites.splice(index, 1);
+                        saveFavorites();
+                        showFavorites(); // Refresh the list
+                    });
+                });
+            }
+            
+            favoritesModal.classList.add('show');
+        }
+        
+        // Get the next compliment
+        function getNextCompliment() {
+            // When we run out, reshuffle
+            if (complimentQueue.length === 0) {
+                complimentQueue = shuffleCompliments(compliments);
+            }
+            return complimentQueue.pop();
+        }
+        
+        // Create confetti animation
+        function createConfetti() {
+            const confettiCount = 100;
+            const colors = ['#ff4757', '#ff1493', '#1e90ff', '#4ecdc4', '#ffbe76', '#7bed9f'];
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                
+                // Randomize size
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                
+                // Different shapes
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                } else if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '0';
+                } else {
+                    confetti.style.width = size / 2 + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.transform = 'rotate(' + Math.random() * 90 + 'deg)';
+                }
+                
+                // Add animation
+                confetti.style.animation = 'confettiFall ' + (Math.random() * 3 + 2) + 's linear forwards';
+                
+                document.body.appendChild(confetti);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Spin the wheel function
+        function spinWheel() {
+            spinButton.disabled = true;
+            actionButtons.style.display = 'none';
+            
+            // Calculate rotation (3-5 full spins + random)
+            const extraSpins = Math.floor(Math.random() * 3) + 3;
+            const randomAngle = Math.floor(Math.random() * 360);
+            const newRotation = currentRotation + (extraSpins * 360) + randomAngle;
+            
+            // Smooth transition with cubic-bezier easing
+            wheel.style.transition = "transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67)";
+            wheel.style.transform = `rotate(${newRotation}deg)`;
+            
+            currentRotation = newRotation;
+            spinCount++;
+            
+            // Special effects for milestone spins
+            if (spinCount % 10 === 0) {
+                setTimeout(() => {
+                    createConfetti();
+                }, 2500);
+            }
+            
+            setTimeout(() => {
+                // Get next compliment from queue
+                currentCompliment = getNextCompliment();
+                
+                // Reset animation and update text
                 complimentElement.style.animation = "none";
+                
                 setTimeout(() => {
                     complimentElement.innerText = currentCompliment;
                     complimentElement.style.animation = "slideUp 0.5s ease forwards";
+                    
+                    // Update share links
                     const shareText = encodeURIComponent(`"${currentCompliment}" Check out ComplimentWheel.com!`);
                     shareTwitter.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent('https://complimentwheel.com')}`;
                     shareTwitter.style.pointerEvents = "auto";
                     shareTwitter.style.opacity = "1";
+                    
                     shareFacebook.onclick = () => {
                         window.open(
-                            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://complimentwheel.com')}"e=${encodeURIComponent(currentCompliment)}`,
+                            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://complimentwheel.com')}&quote=${encodeURIComponent(currentCompliment)}`,
                             'facebook-share',
                             'width=600,height=400'
                         );
@@ -649,11 +1247,70 @@
                     };
                     shareFacebook.style.pointerEvents = "auto";
                     shareFacebook.style.opacity = "1";
+                    
+                    // Show action buttons
+                    actionButtons.style.display = 'flex';
+                    
+                    // Check if compliment is already a favorite
+                    if (favorites.includes(currentCompliment)) {
+                        favoriteBtn.innerHTML = '<span class="action-button-icon">❤️</span> Already Saved';
+                    } else {
+                        favoriteBtn.innerHTML = '<span class="action-button-icon">❤️</span> Save as Favorite';
+                    }
+                    
                 }, 10);
-
+                
                 spinButton.disabled = false;
             }, 3000);
         }
+        
+        // Set up event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            checkFirstTimeVisitor();
+            checkStreak();
+            loadFavorites();
+            
+            // Modal close button
+            modalClose.addEventListener('click', () => {
+                firstTimeModal.classList.remove('show');
+            });
+            
+            // Favorites modal close buttons
+            favoritesClose.addEventListener('click', () => {
+                favoritesModal.classList.remove('show');
+            });
+            
+            closeFavorites.addEventListener('click', () => {
+                favoritesModal.classList.remove('show');
+            });
+            
+            // Start spinning button in modal
+            startSpinning.addEventListener('click', () => {
+                firstTimeModal.classList.remove('show');
+                spinWheel();
+            });
+            
+            // Spin again button
+            spinAgainBtn.addEventListener('click', spinWheel);
+            
+            // Favorite button
+            favoriteBtn.addEventListener('click', addToFavorites);
+            
+            // View favorites button
+            viewFavoritesBtn.addEventListener('click', showFavorites);
+            
+            // Add keyboard accessibility
+            wheel.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    spinWheel();
+                    e.preventDefault();
+                }
+            });
+            
+            // Ensure all click handlers work
+            wheel.onclick = spinWheel;
+            spinButton.onclick = spinWheel;
+        });
     </script>
 </body>
 </html>
