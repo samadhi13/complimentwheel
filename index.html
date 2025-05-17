@@ -45,7 +45,84 @@
             line-height: 1.6;
         }
         
+        .wrapper {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            box-sizing: border-box;
+        }
+        
+        .left-sidebar, .right-sidebar {
+            flex: 1;
+            padding: 20px;
+            padding-top: 60px; /* Aligns ads with top of .generator */
+        }
+        
+        .ad-space {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: 180px;
+            height: 250px;
+            box-sizing: border-box;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .ad-space:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ad-space img {
+            max-width: 100%;
+            max-height: 120px;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .ad-space p {
+            font-size: 13px;
+            margin: 8px 0;
+            line-height: 1.2;
+            max-height: 50px;
+            overflow: hidden;
+        }
+        
+        .ad-space a {
+            text-decoration: none;
+            color: #2f3542;
+        }
+        
+        .ad-space a:hover {
+            color: var(--accent-color);
+        }
+        
+        .ad-button {
+            display: block;
+            margin: 8px auto 0;
+            padding: 8px 16px;
+            font-size: 13px;
+            background-color: #FDB827;
+            color: var(--dark-text);
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .ad-button:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
         .container {
+            flex: 3;
             max-width: 800px;
             width: 100%;
             padding: 20px;
@@ -531,9 +608,33 @@
         }
         
         @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .left-sidebar {
+                order: 2;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                padding-top: 20px;
+            }
+            
             .container {
+                order: 1;
                 padding: 15px;
                 margin: 20px auto;
+            }
+            
+            .right-sidebar {
+                order: 3;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                padding-top: 20px;
             }
             
             .generator {
@@ -683,73 +784,104 @@
         </div>
     </div>
     
-    <div class="container">
-        <div class="generator">
-            <h1>Compliment Wheel</h1>
-            
-            <div class="intro">
-                <p>Welcome to Compliment Wheel! Spin for positivity and a fun way to discover playful English phrases!</p>
-                <p>"Be the Good" with every click — get a quirky compliment like "You're a superhero without the cape!" or "Your smile could power a city of grins!"</p>
-                <p>With hundreds of unique spins, it's your daily dose of joy. Ready to brighten your day?</p>
-            </div>
-            
-            <div class="streak-counter" id="streakCounter">
-                <span class="streak-icon">🔥</span>
-                <span class="streak-text">Day streak: <span id="streakCount">0</span></span>
-            </div>
-            
-            <div class="prompt">Compliments to Make Your Day—Spin Now!</div>
-            
-            <div class="wheel-container">
-                <div class="wheel-pointer"></div>
-                <div class="wheel" id="wheel" aria-label="Compliment Wheel" role="button" tabindex="0"></div>
-            </div>
-            
-            <button class="spin-button" id="spinButton" aria-label="Spin the Wheel for a Compliment">Spin the Wheel!</button>
-            
-            <p id="compliment">Spin for a surprise compliment!</p>
-            
-            <div class="action-buttons" id="actionButtons" style="display: none;">
-                <button class="action-button" id="spinAgainBtn">
-                    <span class="action-button-icon">🔄</span> Spin Again
-                </button>
-                <button class="action-button" id="favoriteBtn">
-                    <span class="action-button-icon">❤️</span> Save as Favorite
-                </button>
-                <button class="action-button" id="viewFavoritesBtn">
-                    <span class="action-button-icon">📋</span> View Favorites
-                </button>
-            </div>
-            
-            <div class="share-buttons">
-                <a href="#" id="shareTwitter" class="share-twitter" target="_blank">
-                    <span class="share-icon">🐦</span> Tweet
-                </a>
-                <a href="#" id="shareFacebook" class="share-facebook">
-                    <span class="share-icon">📘</span> Share
+    <div class="wrapper">
+        <div class="left-sidebar">
+            <div class="ad-space">
+                <a href="https://www.amazon.com/Vintage-Sixties-Designs-Hand-Drawn-Coloring/dp/B0F6NHCFX7/ref=sr_1_1?crid=22QTKUX34SQOC&dib=eyJ2IjoiMSJ9.RS0-ZKChjVBw7nkBWL5iSQso1ceKhQzQZjJMha5DlZs.If1OMZjtxYfpo6XIA5lI0B44teEyBjyEXY7Iyki-ZqE&dib_tag=se&keywords=benjamin+archer+sixties&qid=1747494457&sprefix=benjamin+archer+sixtie%2Caps%2C194&sr=8-1" target="_blank">
+                    <img src="sixties_ad.png" alt="Vintage Sixties Coloring Book">
+                    <p>Explore groovy 60s designs in this hand-drawn coloring book!</p>
                 </a>
             </div>
-            
-            <div class="about">
-                <h2>Why Spin the Compliment Wheel?</h2>
-                <p>At Compliment Wheel, we're all about spreading joy — one spin at a time. With over hundreds of unique, handcrafted compliments, it's a playful way to brighten your day or someone else's.</p>
-                <p>But it's more than just fun, it's a chance to "Be the Good" in a world that needs it. Each spin delivers a quirky English phrase, perfect for a quick smile or even learning some colorful English expressions.</p>
-                <p>Whether you're feeling down or just need a boost, our wheel is here to lift spirits and spark positivity. Imagine the ripple effect—one kind word can turn a frown upside down!</p>
+            <div class="ad-space">
+                <a href="https://www.amazon.com/dp/B0F2FJLVR2" target="_blank">
+                    <img src="train_ad.jpg" alt="All Aboard! 50 Coloring Vintage Trains">
+                    <p>Color 50 vintage trains from history’s rails—fun for all ages!</p>
+                </a>
             </div>
-            
-            <div class="samples">
-                <h2>Sample Compliments</h2>
-                <p>Try these English gems—spin for more!</p>
-                <ul>
-                    <li>"You're the sprinkles on life's cupcake!"</li>
-                    <li>"You've got more pizzazz than a parade!"</li>
-                    <li>"You're a whirlwind of pure delight!"</li>
-                    <li>"Your laugh could cure Monday blues!"</li>
-                    <li>"You're the cat's pajamas of positivity!"</li>
-                </ul>
+        </div>
+        <div class="container">
+            <div class="generator">
+                <h1>Compliment Wheel</h1>
+                
+                <div class="intro">
+                    <p>Welcome to Compliment Wheel! Spin for positivity and a fun way to discover playful English phrases!</p>
+                    <p>"Be the Good" with every click — get a quirky compliment like "You're a superhero without the cape!" or "Your smile could power a city of grins!"</p>
+                    <p>With hundreds of unique spins, it's your daily dose of joy. Ready to brighten your day?</p>
+                </div>
+                
+                <div class="streak-counter" id="streakCounter">
+                    <span class="streak-icon">🔥</span>
+                    <span class="streak-text">Day streak: <span id="streakCount">0</span></span>
+                </div>
+                
+                <div class="prompt">Compliments to Make Your Day—Spin Now!</div>
+                
+                <div class="wheel-container">
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel" id="wheel" aria-label="Compliment Wheel" role="button" tabindex="0"></div>
+                </div>
+                
+                <button class="spin-button" id="spinButton" aria-label="Spin the Wheel for a Compliment">Spin the Wheel!</button>
+                
+                <p id="compliment">Spin for a surprise compliment!</p>
+                
+                <div class="action-buttons" id="actionButtons" style="display: none;">
+                    <button class="action-button" id="spinAgainBtn">
+                        <span class="action-button-icon">🔄</span> Spin Again
+                    </button>
+                    <button class="action-button" id="favoriteBtn">
+                        <span class="action-button-icon">❤️</span> Save as Favorite
+                    </button>
+                    <button class="action-button" id="viewFavoritesBtn">
+                        <span class="action-button-icon">📋</span> View Favorites
+                    </button>
+                </div>
+                
+                <div class="share-buttons">
+                    <a href="#" id="shareTwitter" class="share-twitter" target="_blank">
+                        <span class="share-icon">🐦</span> Tweet
+                    </a>
+                    <a href="#" id="shareFacebook" class="share-facebook">
+                        <span class="share-icon">📘</span> Share
+                    </a>
+                </div>
+                
+                <div class="about">
+                    <h2>Why Spin the Compliment Wheel?</h2>
+                    <p>At Compliment Wheel, we're all about spreading joy — one spin at a time. With over hundreds of unique, handcrafted compliments, it's a playful way to brighten your day or someone else's.</p>
+                    <p>But it's more than just fun, it's a chance to "Be the Good" in a world that needs it. Each spin delivers a quirky English phrase, perfect for a quick smile or even learning some colorful English expressions.</p>
+                    <p>Whether you're feeling down or just need a boost, our wheel is here to lift spirits and spark positivity. Imagine the ripple effect—one kind word can turn a frown upside down!</p>
+                </div>
+                
+                <div class="samples">
+                    <h2>Sample Compliments</h2>
+                    <p>Try these English gems—spin for more!</p>
+                    <ul>
+                        <li>"You're the sprinkles on life's cupcake!"</li>
+                        <li>"You've got more pizzazz than a parade!"</li>
+                        <li>"You're a whirlwind of pure delight!"</li>
+                        <li>"Your laugh could cure Monday blues!"</li>
+                        <li>"You're the cat's pajamas of positivity!"</li>
+                    </ul>
+                </div>
+                
+                <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
             </div>
-            
-            <a href="mailto:musiknote@yahoo.com?subject=Advertising%20with%20Compliment%20Wheel" class="contact-us">Contact Us</a>
+        </div>
+        <div class="right-sidebar">
+            <div class="ad-space">
+                <a href="https://www.amazon.com/Art-Deco-Elegance-Patterns-Hand-Drawn/dp/B0F6NJJ1Y5/ref=sr_1_1?crid=EB04WAJ2LQPY&dib=eyJ2IjoiMSJ9.Qb4cndCNtLC4W4XeANMTDtox7ypGjWuag9IdRdKh0Ys.plFDKF4G6McYYJaGXbV_Slf4fJyqqDu1N6IthHQyg48&dib_tag=se&keywords=benjamin+archer+art+deco&qid=1747494499&sprefix=benjamin+archer+art+dec%2Caps%2C197&sr=8-1" target="_blank">
+                    <img src="art_deco_ad.png" alt="Art Deco Elegance Coloring Book">
+                    <p>Discover elegant Art Deco patterns in this hand-drawn coloring book!</p>
+                </a>
+            </div>
+            <div class="ad-space">
+                <a href="https://spinthebattrivia.com/" target="_blank">
+                    <img src="baseball_ad.png" alt="Spin the Bat Trivia">
+                    <p>Test your MLB knowledge with fun baseball trivia!</p>
+                </a>
+                <a href="https://spinthebattrivia.com/" target="_blank" class="ad-button">Play Now</a>
+            </div>
         </div>
     </div>
     
